@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var numero: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -24,8 +27,16 @@ class ViewController: UIViewController {
         
         tree.printOrdered(node: tree.root!)
         
-        print(tree.root?.value)
     }
+    
+    @IBAction func inserirNumero(_ sender: Any) {
+        if let n = Int(numero.text!) {
+            
+        }else {
+            print("Invalido")
+        }
+    }
+    
 
 
 }

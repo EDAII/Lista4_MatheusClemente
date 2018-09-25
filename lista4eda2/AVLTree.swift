@@ -30,12 +30,6 @@ class AVLNode {
         return leftHeight - rightHeight
     }
     
-    var isLeftChild: Bool {
-        return parentNode?.leftNode?.value == self.value
-    }
-    var isRightChild: Bool {
-        return parentNode?.rightNode?.value == self.value
-    }
 
 }
 
@@ -79,7 +73,8 @@ class AVLTree {
         if let left = node.leftNode {
             printOrdered(node: left)
         }
-        print("\(node.value)|\(node.height)| _\(node.balanceFactor)_", separator: " ", terminator: "- ")
+        print("\(node.value)", separator: " ", terminator: "- ")
+        // |\(node.height)| _\(node.balanceFactor)_
         if let right = node.rightNode {
             printOrdered(node: right)
         }
@@ -127,7 +122,7 @@ class AVLTree {
                 root = head
             } else {
                 head.parentNode = nodeParent
-                if head.isLeftChild {
+                if head.parentNode?.leftNode?.value == node.value {
                     nodeParent?.leftNode = head
                 } else {
                     nodeParent?.rightNode = head
@@ -156,7 +151,7 @@ class AVLTree {
                 root = head
             } else {
                 head.parentNode = nodeParent
-                if head.isLeftChild {
+                if head.parentNode?.leftNode?.value == node.value {
                     nodeParent?.leftNode = head
                 } else {
                     nodeParent?.rightNode = head
