@@ -39,7 +39,19 @@ class ViewController: UIViewController {
         }
     }
     
-
+    @IBAction func buscarNumero(_ sender: Any) {
+        if let n = Int(numero.text!) {
+            let result = tree!.search(value: n, node: tree!.root!)
+            if result != nil {
+                msg.text = "\(String(describing: result?.value)) encontrado na altura \(result?.height))"
+            } else {
+                msg.text = "Valor nao encontrado"
+            }
+        }else {
+            msg.text = "Invalido"
+        }
+    }
+    
 
 }
 

@@ -80,6 +80,25 @@ class AVLTree {
         }
     }
     
+    func search(value: Int, node: AVLNode) -> AVLNode?{
+        
+        if value < node.value {
+            if let left = node.leftNode {
+                return search(value: value, node: left)
+            } else {
+                return nil
+            }
+        } else if value > node.value {
+            if let right = node.rightNode {
+                return search(value: value, node: right)
+            } else {
+                return nil
+            }
+        } else {
+            return node
+        }
+    }
+    
     private func balance(node: AVLNode) {
         
         if let left = node.leftNode {
